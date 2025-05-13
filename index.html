@@ -32,17 +32,23 @@
             padding: 20px;
             border-radius: 15px;
             width: 90%;
-            max-width: 480px;
+            max-width: 600px;
             backdrop-filter: blur(5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         #festivalQuote {
             font-family: 'Laila', sans-serif;
             color: #8A2BE2;
-            font-size: clamp(1.2em, 5vw, 1.6em);
+            font-size: clamp(1.1em, 4vw, 1.5em);
             font-weight: 500;
-            margin-bottom: 25px;
-            padding: 35px;
+            margin: 15px 0;
+            padding: 20px;
             text-shadow: 0 0 10px #6A5ACD, 0 0 20px #4682B4;
             line-height: 1.6;
             opacity: 0;
@@ -50,6 +56,8 @@
             position: relative;
             overflow: visible;
             z-index: 2;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         /* Rocket particles */
@@ -106,81 +114,60 @@
         #mainFestivalGreeting {
             font-family: 'Laila', sans-serif;
             color: #8A2BE2;
-            font-size: clamp(1.8em, 6vw, 2.5em);
+            font-size: clamp(1.6em, 5vw, 2.2em);
             font-weight: 700;
-            margin-bottom: 20px;
+            margin: 15px 0;
             text-shadow: 0 0 10px #6A5ACD;
             opacity: 0;
             animation: fadeIn 1s ease-out 0.5s forwards;
-            display: flex; /* Changed from inline-flex */
+            display: flex;
             align-items: center;
             justify-content: center;
-            line-height: 1.2;
+            line-height: 1.4;
+            width: 100%;
         }
 
         #mainFestivalGreeting::before,
         #mainFestivalGreeting::after {
             content: '🌞';
-            font-size: 1em; /* Match text size */
-            vertical-align: middle; /* Align with text baseline */
+            font-size: 1em;
+            vertical-align: middle;
             line-height: inherit;
         }
 
         #senderAttribution {
             color: #1A3C5A;
-            font-size: clamp(1em, 4vw, 1.3em);
-            margin-bottom: 20px;
+            font-size: clamp(0.9em, 3.5vw, 1.2em);
+            margin: 15px 0;
             opacity: 0;
             animation: fadeIn 1s ease-out 0.7s forwards;
+            line-height: 1.4;
+            width: 100%;
         }
         #senderAttribution strong {
             color: #6A5ACD;
             font-weight: bold;
         }
 
-        button {
-            background: linear-gradient(180deg, #4682B4, #6A5ACD);
-            color: #FFFFFF;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: clamp(1em, 4vw, 1.1em);
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            margin-top: 10px;
-        }
-        button:hover {
-            background: linear-gradient(180deg, #6A5ACD, #4682B4);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        .adsterra-native {
+            margin: 15px 0;
+            width: 100%;
+            max-width: 728px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.9s forwards;
         }
 
         .footer-note {
-            margin-top: 20px;
-            font-size: 0.9em;
+            margin: 15px 0;
+            font-size: clamp(0.8em, 3vw, 1em);
             color: #8A2BE2;
             opacity: 0;
             animation: fadeIn 1s ease-out 1s forwards;
-        }
-
-        .toast {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #1A3C5A;
-            color: #FFFFFF;
-            padding: 10px 20px;
-            border-radius: 8px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 1000;
-            font-size: 0.9em;
-        }
-        .toast.visible {
-            opacity: 1;
+            line-height: 1.4;
+            width: 100%;
         }
 
         /* Accessibility: Reduce motion for users who prefer it */
@@ -190,6 +177,19 @@
                 animation: none;
             }
         }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            #festivalQuote {
+                padding: 15px;
+            }
+            .adsterra-native {
+                max-width: 300px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -197,9 +197,23 @@
         <p id="festivalQuote"></p>
         <h2 id="mainFestivalGreeting">Good Morning!</h2>
         <p id="senderAttribution" style="display:none;"></p>
-        <button id="shareLinkButton" onclick="shareLink()">लिंक कॉपी करें और शेयर करें</button>
+        <div class="adsterra-native">
+            <script type="text/javascript">
+                atOptions = {
+                    'key': 'your-unique-ad-key',
+                    'format': 'iframe',
+                    'height': 90,
+                    'width': 728,
+                    'params': {}
+                };
+                document.write('<scr' + 'ipt type="text/javascript" src="//www.topcreativeformat.com/your-unique-ad-key/invoke.js"></scr' + 'ipt>');
+            </script>
+        </div>
         <p class="footer-note">Good Morning के साथ हर सुबह प्रेरणा भरो!</p>
     </div>
+
+    <!-- Adsterra Popunder Ad -->
+    <script type="text/javascript" src="//pl26527867.profitableratecpm.com/37/71/ad/3771ad6d298495edaa745aa9e1a4bfbb.js" async></script>
 
     <script>
         const quote = "जीवन में शांति चाहते हैं तो दूसरों की शिकायतें करने से बेहतर है खुद को बदल लें। क्योंकि पूरी दुनिया में कारपेट बिछाने से खुद के पैरों में चप्पल पहन लेना अधिक सरल है।";
@@ -215,78 +229,6 @@
             const div = document.createElement('div');
             div.textContent = input;
             return div.innerHTML;
-        }
-
-        function showToast(message) {
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.textContent = message;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.classList.add('visible'), 100);
-            setTimeout(() => toast.remove(), 3000);
-        }
-
-        function shareLink() {
-            const baseUrl = 'https://yourusername.github.io/shayari-greeting/index.html';
-            const isLocal = window.location.href.startsWith('file://') || window.location.hostname === 'localhost';
-
-            if (isLocal) {
-                showToast("यह पेज लोकल फाइल पर है। GitHub Pages पर होस्ट करें।");
-                return;
-            }
-
-            const shareMessage = `🌞 आपके लिए Good Morning का खास मैसेज! ✨ इसे खोलें और देखें: ${baseUrl}`;
-
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(shareMessage).then(() => {
-                    showToast("लिंक कॉपी हुआ!");
-                }).catch(() => {
-                    tryFallbackCopy(shareMessage);
-                });
-            } else {
-                tryFallbackCopy(shareMessage);
-            }
-
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Good Morning शायरी',
-                    text: shareMessage
-                }).then(() => {
-                    showToast("शेयरिंग शुरू!");
-                }).catch(() => {
-                    fallbackToSMS(shareMessage);
-                });
-            } else {
-                fallbackToSMS(shareMessage);
-            }
-        }
-
-        function tryFallbackCopy(shareMessage) {
-            const tempInput = document.createElement('textarea');
-            tempInput.value = shareMessage;
-            tempInput.style.position = 'fixed';
-            tempInput.style.opacity = '0';
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            try {
-                document.execCommand('copy');
-                showToast("लिंक कॉपी हुआ!");
-            } catch {
-                showToast("लिंक कॉपी नहीं हुआ! मैन्युअली कॉपी करें: " + shareMessage);
-            } finally {
-                document.body.removeChild(tempInput);
-            }
-        }
-
-        function fallbackToSMS(shareMessage) {
-            const encodedMessage = encodeURIComponent(shareMessage);
-            const smsLink = `sms:?body=${encodedMessage}`;
-            try {
-                window.location.href = smsLink;
-                showToast("SMS ऐप खुल रहा है!");
-            } catch {
-                showToast("शेयर नहीं हुआ। मैन्युअली शेयर करें: " + shareMessage);
-            }
         }
 
         // Dynamic rocket firework effect
