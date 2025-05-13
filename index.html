@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Good Morning शायरी भेजें! अपने दोस्तों और परिवार के साथ सुबह की ताजगी साझा करें।">
+    <meta name="keywords" content="Good Morning, शायरी, प्रेरणादायक, हिंदी, सुबह">
+    <meta property="og:title" content="🌞 Good Morning! 🌞">
+    <meta property="og:description" content="अपने प्रियजनों को Good Morning शायरी भेजें और सुबह की ताजगी फैलाएँ!">
+    <meta property="og:image" content="https://yourusername.github.io/shayari-greeting/assets/shayari.jpg">
+    <title>🌞 Good Morning! 🌞</title>
+    <link href="https://fonts.googleapis.com/css2?family=Laila:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans Devanagari', 'Laila', sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #87CEEB, #FF69B4, #FFD700);
+            color: #1A3C5A;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 480px;
+            backdrop-filter: blur(5px);
+        }
+
+        #festivalQuote {
+            font-family: 'Laila', sans-serif;
+            color: #8A2BE2;
+            font-size: clamp(1.2em, 5vw, 1.6em);
+            font-weight: 500;
+            margin-bottom: 25px;
+            padding: 35px;
+            text-shadow: 0 0 10px #6A5ACD, 0 0 20px #4682B4;
+            line-height: 1.6;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            position: relative;
+            overflow: visible;
+            z-index: 2;
+        }
+
+        /* Rocket particles */
+        .rocket-particle {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            z-index: 1;
+            animation: rocket 0.4s ease-out forwards;
+            will-change: transform, opacity;
+        }
+
+        /* Explosion particles */
+        .explosion-particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            z-index: 1;
+            animation: explode 0.6s ease-out forwards;
+            will-change: transform, opacity;
+        }
+
+        @keyframes rocket {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+                box-shadow: 0 0 15px var(--color);
+            }
+            100% {
+                transform: translate(var(--x), var(--y)) scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+                box-shadow: 0 0 10px var(--color);
+            }
+            100% {
+                transform: translate(var(--x), var(--y)) scale(0.3);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #mainFestivalGreeting {
+            font-family: 'Laila', sans-serif;
+            color: #8A2BE2;
+            font-size: clamp(1.8em, 6vw, 2.5em);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #6A5ACD;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+            display: flex; /* Changed from inline-flex */
+            align-items: center;
+            justify-content: center;
+            line-height: 1.2;
+        }
+
+        #mainFestivalGreeting::before,
+        #mainFestivalGreeting::after {
+            content: '🌞';
+            font-size: 1em; /* Match text size */
+            vertical-align: middle; /* Align with text baseline */
+            line-height: inherit;
+        }
+
+        #senderAttribution {
+            color: #1A3C5A;
+            font-size: clamp(1em, 4vw, 1.3em);
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.7s forwards;
+        }
+        #senderAttribution strong {
+            color: #6A5ACD;
+            font-weight: bold;
+        }
+
+        button {
+            background: linear-gradient(180deg, #4682B4, #6A5ACD);
+            color: #FFFFFF;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: clamp(1em, 4vw, 1.1em);
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin-top: 10px;
+        }
+        button:hover {
+            background: linear-gradient(180deg, #6A5ACD, #4682B4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .footer-note {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #8A2BE2;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s forwards;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1A3C5A;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            border-radius: 8px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+            font-size: 0.9em;
+        }
+        .toast.visible {
+            opacity: 1;
+        }
+
+        /* Accessibility: Reduce motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+            .rocket-particle,
+            .explosion-particle {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p id="festivalQuote"></p>
+        <h2 id="mainFestivalGreeting">Good Morning!</h2>
+        <p id="senderAttribution" style="display:none;"></p>
+        <button id="shareLinkButton" onclick="shareLink()">लिंक कॉपी करें और शेयर करें</button>
+        <p class="footer-note">Good Morning के साथ हर सुबह प्रेरणा भरो!</p>
+    </div>
+
+    <script>
+        const quote = "जीवन में शांति चाहते हैं तो दूसरों की शिकायतें करने से बेहतर है खुद को बदल लें। क्योंकि पूरी दुनिया में कारपेट बिछाने से खुद के पैरों में चप्पल पहन लेना अधिक सरल है।";
+
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        function sanitizeInput(input) {
+            const div = document.createElement('div');
+            div.textContent = input;
+            return div.innerHTML;
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.classList.add('visible'), 100);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        function shareLink() {
+            const baseUrl = 'https://yourusername.github.io/shayari-greeting/index.html';
+            const isLocal = window.location.href.startsWith('file://') || window.location.hostname === 'localhost';
+
+            if (isLocal) {
+                showToast("यह पेज लोकल फाइल पर है। GitHub Pages पर होस्ट करें।");
+                return;
+            }
+
+            const shareMessage = `🌞 आपके लिए Good Morning का खास मैसेज! ✨ इसे खोलें और देखें: ${baseUrl}`;
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(shareMessage).then(() => {
+                    showToast("लिंक कॉपी हुआ!");
+                }).catch(() => {
+                    tryFallbackCopy(shareMessage);
+                });
+            } else {
+                tryFallbackCopy(shareMessage);
+            }
+
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Good Morning शायरी',
+                    text: shareMessage
+                }).then(() => {
+                    showToast("शेयरिंग शुरू!");
+                }).catch(() => {
+                    fallbackToSMS(shareMessage);
+                });
+            } else {
+                fallbackToSMS(shareMessage);
+            }
+        }
+
+        function tryFallbackCopy(shareMessage) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = shareMessage;
+            tempInput.style.position = 'fixed';
+            tempInput.style.opacity = '0';
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                showToast("लिंक कॉपी हुआ!");
+            } catch {
+                showToast("लिंक कॉपी नहीं हुआ! मैन्युअली कॉपी करें: " + shareMessage);
+            } finally {
+                document.body.removeChild(tempInput);
+            }
+        }
+
+        function fallbackToSMS(shareMessage) {
+            const encodedMessage = encodeURIComponent(shareMessage);
+            const smsLink = `sms:?body=${encodedMessage}`;
+            try {
+                window.location.href = smsLink;
+                showToast("SMS ऐप खुल रहा है!");
+            } catch {
+                showToast("शेयर नहीं हुआ। मैन्युअली शेयर करें: " + shareMessage);
+            }
+        }
+
+        // Dynamic rocket firework effect
+        function spawnRocket() {
+            const quoteElement = document.getElementById('festivalQuote');
+            const rocket = document.createElement('span');
+            rocket.className = 'rocket-particle';
+
+            // Random position around the quote
+            const top = Math.random() * 100;
+            const left = Math.random() * 100;
+
+            // Random trajectory for rocket
+            const angle = Math.random() * 2 * Math.PI;
+            const distance = 20 + Math.random() * 20; // 20–40px
+            const x = Math.cos(angle) * distance;
+            const y = Math.sin(angle) * distance;
+
+            rocket.style.top = `${top}%`;
+            rocket.style.left = `${left}%`;
+            rocket.style.setProperty('--x', `${x}px`);
+            rocket.style.setProperty('--y', `${y}px`);
+
+            // Random color
+            const colors = ['#FF0000', '#FFD700', '#00BFFF'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            rocket.style.background = `radial-gradient(circle, ${color} 20%, #FFFFFF 80%)`;
+            rocket.style.setProperty('--color', color);
+
+            quoteElement.appendChild(rocket);
+
+            // Explode after rocket animation
+            setTimeout(() => {
+                rocket.remove();
+                const particleCount = 5 + Math.floor(Math.random() * 4); // 5–8
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('span');
+                    particle.className = 'explosion-particle';
+
+                    // Position at rocket's final position
+                    particle.style.top = `${top + (y / quoteElement.offsetHeight) * 100}%`;
+                    particle.style.left = `${left + (x / quoteElement.offsetWidth) * 100}%`;
+
+                    // Random spread trajectory
+                    const spreadAngle = (i / particleCount) * 2 * Math.PI + Math.random() * 0.5;
+                    const spreadDistance = 20 + Math.random() * 20; // 20–40px
+                    const spreadX = Math.cos(spreadAngle) * spreadDistance;
+                    const spreadY = Math.sin(spreadAngle) * spreadDistance;
+
+                    particle.style.setProperty('--x', `${spreadX}px`);
+                    particle.style.setProperty('--y', `${spreadY}px`);
+                    particle.style.background = `radial-gradient(circle, ${color} 20%, #FFFFFF 80%)`;
+                    particle.style.setProperty('--color', color);
+
+                    quoteElement.appendChild(particle);
+                    setTimeout(() => particle.remove(), 600);
+                }
+            }, 400);
+        }
+
+        function startRocketEffect() {
+            // Initial burst
+            for (let i = 0; i < 10; i++) {
+                setTimeout(spawnRocket, i * 100);
+            }
+            // Continuous spawning
+            setInterval(() => {
+                const count = 3 + Math.floor(Math.random() * 3); // 3–5 rockets
+                for (let i = 0; i < count; i++) {
+                    setTimeout(spawnRocket, i * 150);
+                }
+            }, 800);
+        }
+
+        window.onload = function() {
+            const senderName = getUrlParameter('sender');
+            const quoteElement = document.getElementById('festivalQuote');
+            const senderAttributionElement = document.getElementById('senderAttribution');
+
+            quoteElement.textContent = quote;
+
+            if (senderName && senderName.trim() !== '') {
+                senderAttributionElement.innerHTML = `प्रेषक: <strong>${sanitizeInput(senderName)}</strong>`;
+                senderAttributionElement.style.display = 'block';
+            } else {
+                senderAttributionElement.style.display = 'none';
+            }
+
+            // Start rocket effect if reduced motion is not enabled
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                startRocketEffect();
+            }
+        };
+    </script>
+</body>
+</html>
